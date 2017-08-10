@@ -1,5 +1,16 @@
 # pythonTJBot
 
+Goal: To run IBM TJBot using Python (instead of node.js) on Raspberry Pi.
+
+## Preparation of environment
+
+1) Update your Raspberry Pi via '''sudo apt-get update''' and '''sudo apt-get upgrade'''.
+
+2) Install **Watson Developer Cloud Python SDK** on your Raspberry Pi: https://github.com/watson-developer-cloud/python-sdk
+
+3) 
+
+
 
 http://dccpp.blogspot.my/2015/08/raspberry-pi-upgrade-alsaaudio.html
 
