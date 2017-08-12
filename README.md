@@ -10,11 +10,13 @@ Goal: To run IBM TJBot using Python (instead of node.js) on Raspberry Pi.
 
 3) Testing USB Microphone 
 
-```sudo apt-get install portaudio19-dev python-all-dev
-sudo apt-get install python-pyaudio python3-pyaudio```
+```sudo apt-get install portaudio19-dev python-all-dev```
+```sudo apt-get install python-pyaudio python3-pyaudio```
+
 
 - Run the following tests to check if your USB mic is capable of recording in Python. 
 ```python record.py```
+
 
 If it returns error, please run ```python stream.py``` to determine the number of channels available, and the index of the input device. Update the ```record.py``` when the information is obtained. For further documentation please refer here: https://people.csail.mit.edu/hubert/pyaudio/
 
