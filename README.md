@@ -4,12 +4,19 @@ Goal: To run IBM TJBot using Python (instead of node.js) on Raspberry Pi.
 
 ## Preparation of environment
 
-1) Update your Raspberry Pi via '''sudo apt-get update''' and '''sudo apt-get upgrade'''.
+1) Update your Raspberry Pi via ```sudo apt-get update``` and ```sudo apt-get upgrade```.
 
 2) Install **Watson Developer Cloud Python SDK** on your Raspberry Pi: https://github.com/watson-developer-cloud/python-sdk
 
-3) 
+3) Testing USB Microphone 
 
+```sudo apt-get install portaudio19-dev python-all-dev
+sudo apt-get install python-pyaudio python3-pyaudio```
+
+- Run the following tests to check if your USB mic is capable of recording in Python. 
+```python record.py```
+
+If it returns error, please run ```python stream.py``` to determine the number of channels available, and the index of the input device. Update the ```record.py``` when the information is obtained. For further documentation please refer here: https://people.csail.mit.edu/hubert/pyaudio/
 
 
 http://dccpp.blogspot.my/2015/08/raspberry-pi-upgrade-alsaaudio.html
