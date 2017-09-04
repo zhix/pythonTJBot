@@ -11,8 +11,7 @@ from gpiozero import LED
 from gpiozero import Servo
 from time import sleep
 
-
-
+## Setting up of the microphone
 CHUNK = 512					##cut down the size
 FORMAT = pyaudio.paInt16
 CHANNELS = 1				##check the channel and index with stream.py
@@ -23,11 +22,16 @@ WAVE_OUTPUT_FILENAME = "output.wav"
 
 p = pyaudio.PyAudio()
 
+## Setting up the electronic components
 redLed = LED(17)					#gpio17 bcm_pin11
 blueLed = LED(27)				#gpio27 bcm_pin13
 greenLed = LED(22)				#gpio22 bcm_pin15
 servoMotor = Servo(7) 			#gpio7 bcm_pin26
 
+speech_to_text = SpeechToTextV1(
+			username='0f8e25a9-2b1e-4dc4-bb88-60fdc17409f6',
+			password='4ssHZACduREg',
+			x_watson_learning_opt_out=False)
 
 while True:
 	## recording speech for 5 seconds
@@ -62,21 +66,18 @@ while True:
 		#wf.setframerate(RATE)
 		#wf.writeframes(b''.join(frames))
 		#wf.close()
-
-		## speech-to-text function 
 		
-		speech_to_text = SpeechToTextV1(
-			username='0f8e25a9-2b1e-4dc4-bb88-60fdc17409f6',
-			password='4ssHZACduREg',
-			x_watson_learning_opt_out=False)
-
-		s2t = speech_to_text.recognize(frames, content_type='audio/l16', timestamps=True, word_confidence=True)
+		s2t = speech_to_text.recognize(frames, content_type='audio/l16;rate=44100;channels=1', timestamps=True, word_confidence=True)
+		textDecoded = s2t["results"][0]["alternatives"][0]["transcript"]
+		print(textDecoded)
 		
-		with open(p,'rb') as audio_file:
+		with open(frames,'rb') as audio_file:
 			s2t = speech_to_text.recognize(audio_file, content_type='audio/l16', timestamps=True, word_confidence=True)
 			textDecoded = s2t["results"][0]["alternatives"][0]["transcript"]
 			print(textDecoded)
-			sleep(1)
+			sleep(0.1)
+		
+		sleep(0.1)
 						
 				
 		#if "red" in textDecoded:

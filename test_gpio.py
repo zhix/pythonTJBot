@@ -10,7 +10,7 @@ greenLed = LED(22)				#gpio22 bcm_pin15
 
 servoMotor = Servo(7) 			#gpio7 bcm_pin26
 
-textDecoded = "shake world and though where"
+textDecoded = "red blue green shake"
 
 if "red" in textDecoded:
 	print("found 'red' in text!")

@@ -15,35 +15,31 @@ Goal: To run IBM TJBot using Python (instead of node.js) on Raspberry Pi.
 
 3) Testing USB Microphone 
 
-```sudo apt-get install portaudio19-dev python-all-dev```
-
-```sudo apt-get install python-pyaudio python3-pyaudio```
-
+```sudo apt-get install portaudio19-dev python-all-dev python-pyaudio python3-pyaudio```
 
 - Run the following tests to check if your USB mic is capable of recording in Python. 
-```python record.py```
+
+```sudo python test_micRecord.py```
+
+- Use an earphone/headphone to listen to your recording by ```omxplayer output.wav```.
+
+- If it returns error, please run ```sudo python test_micStream.py``` to determine the number of channels available, and the index of the input device. Update the ```record.py``` when the information is obtained. For further documentation please refer here: https://people.csail.mit.edu/hubert/pyaudio/
+
+4) Testing the GPIO 
+
+- Prepare the electronics as shown in the diagram below. 
+- Run the ```test_gpio.py``` script to find if every electronic is responding accordingly. 
 
 
-If it returns error, please run ```python stream.py``` to determine the number of channels available, and the index of the input device. Update the ```record.py``` when the information is obtained. For further documentation please refer here: https://people.csail.mit.edu/hubert/pyaudio/
-
-
-3) Testing the Watson API
+5) Testing the Watson API
 
 - Login to your Bluemix account to obtain the credentials. 
-- edit ```speech_to_text_v1.py```  
+- edit the credentials in ```test_speechToText.py```  
+- run ```test_speechToText.py``` with Python 
+
+```test_speechToText.py```  runs the Watson's Speech-to-text function with ```output.wav``` from earlier then print output on screen. 
+
+### Finally let's run the real thing 
 
 
-http://dccpp.blogspot.my/2015/08/raspberry-pi-upgrade-alsaaudio.html
 
-sudo apt-get install python-dev libasound2-dev
-
-Find out more from here: http://larsimmisch.github.io/pyalsaaudio/index.html
-
-Download the latest version pyalsaaudio here: https://pypi.python.org/pypi/pyalsaaudio
-
-tar -xvf pyalsaaudio-0.8.4.tar.gz
-cd pyalsaaudio-0.8.4/
-sudo python setup.py build
-
-
-## Watson API
